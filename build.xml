@@ -12,7 +12,7 @@
       <path refid = "classpath.base" />
    </path>
    <target name="prepare" description="Prepare for build">
-	 <mkdir dir="${basedir}/${outputdir}" />
+	 <mkdir dir="${basedir}/${testdir}" />
    </target>
 
    <target name = "clean" depends = "prepare">
