@@ -8,6 +8,7 @@
    <path id = "classpath.test">
 	  <pathelement location="${LIB_HOME}/lib/junit-4.10.jar"/>
       <pathelement location = "${srcdir}" />
+	   <pathelement location = "${outputdir}" />
       <path refid = "classpath.base" />
    </path>
 	
