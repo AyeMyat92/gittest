@@ -28,7 +28,7 @@ public class CalculatorTest {
 	 @Test
 	 public void testSubtract() {
 	  double result = calc.subtract(100.5, 100);
-	  assertEquals(0.6, result, 0);
+	  assertEquals(0.5, result, 0);
 	 }
 	 
 	 @Test
