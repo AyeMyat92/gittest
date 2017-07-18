@@ -1,7 +1,7 @@
 <project name = "JunitTesting" >
-   <property name = "testdir" location = "test" />
+   <property name = "testdir" location = "JunitTesting/test" />
    <property name = "classdir" location = "${testdir}/class" />
-   <property name = "srcdir" location = "src" />
+   <property name = "srcdir" location = "JunitTesting/src" />
    <property name = "full-compile" value = "true" />
    <property name="LIB_HOME" value="D:/junit"/>
 	
