@@ -17,7 +17,7 @@
       </delete>
    </target>
    
-	<target name = "compile" depends = "prepare">
+	<target name = "compile" depends = "clean">
 		<mkdir dir="${outputdir}" />
 		<javac srcdir = "${srcdir}" destdir = "${outputdir}" 
 			verbose = "${full-compile}">
