@@ -1,10 +1,9 @@
-<project name = "JunitTest" basedir = "." default = "test">
+<project name = "JunitTest" >
    <property name = "testdir" location = "test" />
    <property name = "srcdir" location = "src" />
    <property name = "full-compile" value = "true" />
    <property name="LIB_HOME" value="D:/junit"/>
 	
-   <path id = "classpath.base"/>
    <path id = "classpath.test">
 	  <pathelement location="${LIB_HOME}/lib/junit-4.10.jar"/>
       <pathelement location = "${testdir}" />
@@ -33,7 +32,7 @@
       </junit>
 	</target>
 	  
-	<target name="test" depends="main">
+    <target name="test" depends="main">
      <junitreport todir="${testdir}">
         <fileset dir="${testdir}">
             <include name="TEST-*.xml" />
