@@ -27,11 +27,12 @@
 	</target>
 
    <target name = "CaculatorTest" depends = "compile">
-		<classpath refid = "classpath.test" />
+       <junit>
+	<classpath refid = "classpath.test" />
          <formatter type = "xml" usefile = "true" />
          <test name = "CalculatorTest" todir="${testdir}" />
-      </junit>
-	</target>
+       </junit>
+   </target>
 	  
 	<target name="test" depends="CaculatorTest">
      <junitreport todir="${testdir}">
