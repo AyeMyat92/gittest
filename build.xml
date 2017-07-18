@@ -13,7 +13,7 @@
    </path>
  
 	<target name = "compile" >
-		<mkdir dir="${basedir}/${testdir}" />
+		<mkdir dir="${testdir}" />
 		<javac src.dir = "${srcdir}" destdir = "${testdir}" 
 			verbose = "${full-compile}">
 			<classpath refid = "classpath.test"/>
