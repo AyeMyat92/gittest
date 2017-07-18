@@ -14,7 +14,7 @@
  
 	<target name = "compile" >
 		<mkdir dir="${testdir}" />
-		<javac src.dir = "${srcdir}" destdir = "${testdir}" 
+		<javac srcdir = "${srcdir}" destdir = "${testdir}" 
 			verbose = "${full-compile}">
 			<classpath refid = "classpath.test"/>
 		</javac>
