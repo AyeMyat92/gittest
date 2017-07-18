@@ -1,36 +1,31 @@
-<project name = "JunitTest" basedir = "." default = "main">
-   <property name = "test.dir" location = "main" />
+<project name = "JunitTest" basedir = "." default = "output">
    <property name = "srcdir" location = "src" />
-   <property name = "result.dir" value = "result" />
+   <property name = "outputdir" value = "output" />
    <property name = "full-compile" value = "true" />
    <property name="LIB_HOME" value="D:/junit"/>
 	
    <path id = "classpath.base"/>
    <path id = "classpath.test">
 	  <pathelement location="${LIB_HOME}/lib/junit-4.10.jar"/>
-      <pathelement location = "${test.dir}" />
       <pathelement location = "${srcdir}" />
       <path refid = "classpath.base" />
    </path>
 	
    <target name = "clean" >
       <delete verbose = "${full-compile}">
-         <fileset dir = "${test.dir}" includes = "**/*.class" />
+         <fileset dir = "${srcdir}" includes = "**/*.class" />
       </delete>
    </target>
    
-   <target name="prepare" depends="clean" description="Prepare for build">
-	 <mkdir dir="${basedir}/${result.dir}" />
-   </target>
-   
 	<target name = "compile" depends = "prepare">
-		<javac srcdir = "${srcdir}" destdir = "${test.dir}" 
+		<mkdir dir="${outputdir}" />
+		<javac srcdir = "${srcdir}" destdir = "${outputdir}" 
 			verbose = "${full-compile}">
 			<classpath refid = "classpath.test"/>
 		</javac>
 	</target>
 
-   <target name = "main" depends = "compile">
+   <target name = "Test" depends = "compile">
       <junit printsummary="true" haltonfailure="false">
 		<classpath refid = "classpath.test" />
          <formatter type = "xml" usefile = "true" />
@@ -38,12 +33,12 @@
       </junit>
 	</target>
 	  
-	<target name="test" depends="main">
-     <junitreport todir="${result.dir}">
-        <fileset dir="${result.dir}">
+	<target name="test" depends="Test">
+     <junitreport todir="${outputdir}">
+        <fileset dir="${outputdir}">
             <include name="TEST-*.xml" />
         </fileset>
-        <report format="frames" todir="${result.dir}" />
+        <report format="frames" todir="${outputdir}" />
       </junitreport>
 	 </target>
 
