@@ -9,11 +9,8 @@
 	  <pathelement location="${LIB_HOME}/lib/junit-4.10.jar"/>
    </path>
  
-   <target name = "init" >
-      <mkdir dir = "${testdir}" />
-   </target>
-	
-	<target name = "compile" depends = "init" >
+	<target name = "compile" >
+		<mkdir dir="${testdir}" />
 		<javac srcdir = "${srcdir}" destdir = "${testdir}" 
 			verbose = "${full-compile}">
 			<classpath refid = "classpath.test"/>
