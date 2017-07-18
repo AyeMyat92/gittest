@@ -11,12 +11,9 @@
       <pathelement location = "${srcdir}" />
       <path refid = "classpath.base" />
    </path>
-   <target name="prepare" description="Prepare for build">
-	 <mkdir dir="${basedir}/${testdir}" />
-   </target>
-
-   <target name = "clean" depends = "prepare">
-	   
+ 
+	<target name = "clean" >
+	  <mkdir dir="${basedir}/${testdir}" /> 
       <delete verbose = "${full-compile}">
          <fileset dir = "${testdir}" includes = "**/*.class" />
       </delete>
