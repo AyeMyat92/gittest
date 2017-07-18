@@ -16,8 +16,12 @@
          <fileset dir = "${srcdir}" includes = "**/*.class" />
       </delete>
    </target>
+	<target name="prepare" depends="clean" description="Prepare for build">
+	 <mkdir dir="${basedir}/${outputdir}" />
+   </target>
+
    
-	<target name = "compile" depends = "clean">
+	<target name = "compile" depends = "prepare">
 		<mkdir dir="${outputdir}" />
 		<javac srcdir = "${srcdir}" destdir = "${outputdir}" 
 			verbose = "${full-compile}">
