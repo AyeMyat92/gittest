@@ -1,0 +1,46 @@
+<project name = "JunitTesting" >
+   <property name = "testdir" location = "test" />
+   <property name = "classdir" location = "${testdir}/class" />
+   <property name = "srcdir" location = "src" />
+   <property name = "full-compile" value = "true" />
+   <property name="LIB_HOME" value="D:/junit"/>
+	
+   <path id = "classpath.test">
+	  <pathelement location="${LIB_HOME}/lib/junit-4.10.jar"/>
+   </path>
+  <target name = "clean" >
+      <delete verbose = "${full-compile}">
+         <fileset dir = "${classdir}" includes = "**/*.class" />
+      </delete>
+   </target>
+   
+   <target name = "init" depends = "clean" >
+      <mkdir dir = "${classdir}" />
+      <mkdir dir = "${testdir}" />
+   </target>
+	
+	<target name = "compile" depends = "init" >
+		<javac srcdir = "${srcdir}" destdir = "${testdir}" 
+			verbose = "${full-compile}">
+			<classpath refid = "classpath.test"/>
+		</javac>
+	</target>
+
+   <target name = "CaculatorTest" depends = "compile">
+		<classpath refid = "classpath.test" />
+         <formatter type = "xml" usefile = "true" />
+         <test name = "CalculatorTest" todir="${testdir}" />
+      </junit>
+	</target>
+	  
+	<target name="test" depends="CaculatorTest">
+     <junitreport todir="${testdir}">
+        <fileset dir="${testdir}">
+            <include name="TEST-*.xml" />
+        </fileset>
+        <report format="frames" todir="${testdir}" />
+      </junitreport>
+	 </target>
+
+	
+</project>
