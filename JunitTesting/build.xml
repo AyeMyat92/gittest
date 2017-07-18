@@ -8,13 +8,8 @@
    <path id = "classpath.test">
 	  <pathelement location="${LIB_HOME}/lib/junit-4.10.jar"/>
    </path>
-  <target name = "clean" >
-      <delete verbose = "${full-compile}">
-         <fileset dir = "${classdir}" includes = "**/*.class" />
-      </delete>
-   </target>
-   
-   <target name = "init" depends = "clean" >
+ 
+   <target name = "init" >
       <mkdir dir = "${classdir}" />
       <mkdir dir = "${testdir}" />
    </target>
