@@ -39,11 +39,11 @@
 	</target>
 	  
 	<target name="test" depends="main">
-     <junitreport todir="${outputdir}">
-        <fileset dir="${outputdir}">
+     <junitreport todir="${testdir}">
+        <fileset dir="${testdir}">
             <include name="TEST-*.xml" />
         </fileset>
-        <report format="frames" todir="${outputdir}" />
+        <report format="frames" todir="${testdir}" />
       </junitreport>
 	 </target>
 
