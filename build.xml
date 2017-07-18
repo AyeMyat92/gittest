@@ -1,36 +1,35 @@
-<project name = "JunitTest" basedir = "." default = "output">
+<project name = "JunitTest" basedir = "." default = "test">
+   <property name = "testdir" location = "test" />
    <property name = "srcdir" location = "src" />
-   <property name = "outputdir" value = "output" />
    <property name = "full-compile" value = "true" />
    <property name="LIB_HOME" value="D:/junit"/>
 	
    <path id = "classpath.base"/>
    <path id = "classpath.test">
 	  <pathelement location="${LIB_HOME}/lib/junit-4.10.jar"/>
+      <pathelement location = "${testdir}" />
       <pathelement location = "${srcdir}" />
-	   <pathelement location = "${outputdir}" />
       <path refid = "classpath.base" />
    </path>
 	
    <target name = "clean" >
       <delete verbose = "${full-compile}">
-         <fileset dir = "${srcdir}" includes = "**/*.class" />
+         <fileset dir = "${testdir}" includes = "**/*.class" />
       </delete>
    </target>
-	<target name="prepare" depends="clean" description="Prepare for build">
-	 <mkdir dir="${basedir}/${outputdir}" />
+   
+   <target name="prepare" depends="clean" description="Prepare for build">
+	 <mkdir dir="${basedir}/${testdir}" />
    </target>
-
    
 	<target name = "compile" depends = "prepare">
-		<mkdir dir="${outputdir}" />
-		<javac srcdir = "${srcdir}" destdir = "${outputdir}" 
+		<javac src.dir = "${srcdir}" destdir = "${testdir}" 
 			verbose = "${full-compile}">
 			<classpath refid = "classpath.test"/>
 		</javac>
 	</target>
 
-   <target name = "Test" depends = "compile">
+   <target name = "main" depends = "compile">
       <junit printsummary="true" haltonfailure="false">
 		<classpath refid = "classpath.test" />
          <formatter type = "xml" usefile = "true" />
@@ -38,7 +37,7 @@
       </junit>
 	</target>
 	  
-	<target name="test" depends="Test">
+	<target name="test" depends="main">
      <junitreport todir="${outputdir}">
         <fileset dir="${outputdir}">
             <include name="TEST-*.xml" />
