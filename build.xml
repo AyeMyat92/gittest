@@ -13,16 +13,14 @@
    </path>
 	
    <target name = "clean" >
+	   <mkdir dir="${basedir}/${testdir}" />
       <delete verbose = "${full-compile}">
          <fileset dir = "${testdir}" includes = "**/*.class" />
       </delete>
    </target>
    
-   <target name="prepare" depends="clean" description="Prepare for build">
-	 <mkdir dir="${basedir}/${testdir}" />
-   </target>
-   
-	<target name = "compile" depends = "prepare">
+  
+	<target name = "compile" depends = "clean">
 		<javac src.dir = "${srcdir}" destdir = "${testdir}" 
 			verbose = "${full-compile}">
 			<classpath refid = "classpath.test"/>
